@@ -5,16 +5,16 @@
  * Class Description: Creating Vehicle Class se as a Super class for others Vehicles
  *
  */
-public class Vehicle {
+public abstract class Vehicle {
 //Private Properties ---=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-	private int numWheels= 4;
-	private int numDoors= 2;
-	private String colour=" ";
-	private String make="";
-	private String model="";
-	private String year=" ";
-	private float speed=0; 
-	private final int MAX_SPEED = 40;
+	protected int numWheels= 4;
+	protected int numDoors= 2;
+	protected String colour=" ";
+	protected String make="";
+	protected String model="";
+	protected String year=" ";
+	protected float speed=0; 
+	protected final int MAX_SPEED = 40;
 	
 	//Get Accessor Methods -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==
 	/**
@@ -76,24 +76,30 @@ public class Vehicle {
 	//getter ends here
 	
 	
-	public Vehicle(){
+	public Vehicle(int wheels,int doors,String colour, String make, String model, String year){
+		this.numWheels=wheels;
+		this.numDoors=doors;
+		this.colour=colour;
+		this.make=make;
+		this.model=model;
+		this.year=year;
+		
+	}
+	
+	public Vehicle(String colour, String make, String model, String year){
+		
+		this.colour=colour;
+		this.make=make;
+		this.model=model;
+		this.year=year;
 		
 	}
 	//public MEthods -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-===-=-=-=-
-	public void accelerate(){
+	//Must be Overridden
+	public abstract void accelerate();
 	
-		this.speed+=4;
-		if(this.speed>=this.MAX_SPEED){
-			this.speed=this.MAX_SPEED;
-		}
-	}
+	public abstract void decelerate();
 	
-	public void decelerate(){
-		this.speed-=6;
-		if(this.speed<0){
-			this.speed=0;
-		}
-	}
 	
 	public void turnLeft(){
 		System.out.println("Turning Left");
